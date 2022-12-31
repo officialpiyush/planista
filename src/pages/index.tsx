@@ -4,6 +4,7 @@ import YearBar from "../components/YearBar";
 export default function HomePage() {
   return (
     <div className="space-y-6">
+      <div className="pt-4 text-center text-3xl font-extrabold underline underline-double">Planista</div>
       <YearBar />
 
       <div>
