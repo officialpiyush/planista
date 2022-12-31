@@ -1,7 +1,9 @@
+import YearBar from "../components/YearBar";
+
 export default function HomePage() {
   return (
     <div>
-      Hello, world!
+      <YearBar />
     </div>
   );
 }
