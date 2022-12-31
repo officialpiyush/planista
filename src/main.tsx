@@ -5,6 +5,7 @@ import App from "./App";
 import "./index.css";
 
 import "virtual:windi.css";
+import "virtual:fonts.css";
 
 // eslint-disable-next-line no-undef
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
