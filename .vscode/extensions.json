@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "arcanis.vscode-zipfs",
+    "dbaeumer.vscode-eslint",
+    "drknoxy.eslint-disable-snippets",
+    "rvest.vs-code-prettier-eslint",
+    "esbenp.prettier-vscode"
+  ]
+}

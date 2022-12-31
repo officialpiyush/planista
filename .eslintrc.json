@@ -1,0 +1,22 @@
+{
+    "extends": [
+        "prettier",
+        "airbnb",
+        "airbnb-typescript",
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "rules": {
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "react/jsx-uses-react": "off",
+        "react/require-default-props": "off",
+        "react/react-in-jsx-scope": "off",
+        "@typescript-eslint/quotes": "off"
+    }
+}
