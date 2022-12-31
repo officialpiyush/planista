@@ -7,12 +7,14 @@ export default function YearBar() {
   const daysRemainingForYearEnd = endOfYear.diff(now, "day");
 
   return (
-    <div className="flex flex-col gap-1 relative">
-      <progress className="w-full h-8 mt-2 bg-pastel-light border border-black" value={daysElapsed * 8} max="365" />
-      <div className="flex justify-end">
-        {daysRemainingForYearEnd}
-        {" "}
-        Remaining
+    <div className="flex flex-col flex-col-reverse gap-1 relative">
+      <progress className="w-full h-8 bg-pastel-light border border-black" value={daysElapsed * 8} max="365" />
+      <div className="flex gap-1.5 justify-end items-end">
+        <span className="font-extrabold block text-lg">
+          {daysRemainingForYearEnd}
+        </span>
+        <span className="block">days</span>
+        <span className="block">remaining</span>
       </div>
     </div>
   );
