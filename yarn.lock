@@ -1637,6 +1637,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dayjs@npm:^1.11.7":
+  version: 1.11.7
+  resolution: "dayjs@npm:1.11.7"
+  checksum: 5003a7c1dd9ed51385beb658231c3548700b82d3548c0cfbe549d85f2d08e90e972510282b7506941452c58d32136d6362f009c77ca55381a09c704e9f177ebb
+  languageName: node
+  linkType: hard
+
 "debug@npm:4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
@@ -4892,6 +4899,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.47.0
     "@typescript-eslint/parser": ^5.47.0
     "@vitejs/plugin-react-swc": ^3.0.0
+    dayjs: ^1.11.7
     eslint: ^8.30.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-airbnb-typescript: ^17.0.0
@@ -4913,6 +4921,7 @@ __metadata:
     react-router-dom: ^6.6.1
     typescript: ^4.9.3
     vite: ^4.0.0
+    vite-plugin-fonts: ^0.7.0
     vite-plugin-pages: ^0.28.0
     vite-plugin-windicss: ^1.8.10
     windicss: ^3.5.6
@@ -5501,6 +5510,17 @@ __metadata:
     spdx-correct: ^3.0.0
     spdx-expression-parse: ^3.0.0
   checksum: 35703ac889d419cf2aceef63daeadbe4e77227c39ab6287eeb6c1b36a746b364f50ba22e88591f5d017bc54685d8137bc2d328d0a896e4d3fd22093c0f32a9ad
+  languageName: node
+  linkType: hard
+
+"vite-plugin-fonts@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "vite-plugin-fonts@npm:0.7.0"
+  dependencies:
+    fast-glob: ^3.2.11
+  peerDependencies:
+    vite: ^2.0.0 || ^3.0.0 || ^4.0.0
+  checksum: 2e4cc4dd32f7dfee0bd8be8abc56051e70c5c9083edccac4166964da40304f5341c50bf4ff7e1e4c9bcd16955e52491a2d56ab07264b19442397cd4d9e4c312a
   languageName: node
   linkType: hard
 

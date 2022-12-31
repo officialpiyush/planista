@@ -14,6 +14,7 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "dayjs": "^1.11.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.6.1",
@@ -44,6 +45,7 @@
     "prettier": "^2.8.1",
     "typescript": "^4.9.3",
     "vite": "^4.0.0",
+    "vite-plugin-fonts": "^0.7.0",
     "vite-plugin-pages": "^0.28.0",
     "vite-plugin-windicss": "^1.8.10",
     "windicss": "^3.5.6"
