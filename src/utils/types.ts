@@ -1,3 +1,5 @@
+import { BSON } from "realm-web";
+
 interface CreateTargetDuration {
   startAt: Date;
   endAt: Date;
@@ -10,11 +12,11 @@ interface CreateTargetOptions {
 }
 
 interface TargetDbDocument {
-  _id: any
+  _id: BSON.ObjectID
   ownerId: string
   createdAt: number
   name: string
-  repeat: string
+  repeat: "day" | "week" | "month";
   duration: any
 }
 
