@@ -5249,6 +5249,7 @@ __metadata:
     react-dom: ^18.2.0
     react-firebase-hooks: ^5.1.1
     react-hotkeys-hook: ^4.3.2
+    react-icons: ^4.7.1
     react-plock: ^2.0.0
     react-router: ^6.6.1
     react-router-dom: ^6.6.1
@@ -5427,6 +5428,15 @@ __metadata:
     react: ">=16.8.1"
     react-dom: ">=16.8.1"
   checksum: aaf0007c0496e7b319f27cb943e4529fe368a86c42e73086b89971c72ea1ac0bb6d58b42ab49c55f6c346ecc334cf3a611f24f758ee1d15bf65d857324098c4c
+  languageName: node
+  linkType: hard
+
+"react-icons@npm:^4.7.1":
+  version: 4.7.1
+  resolution: "react-icons@npm:4.7.1"
+  peerDependencies:
+    react: "*"
+  checksum: ed3cbdc5fc0c4d7d2debf78fdc8c4c80aeacf85a506a9a3c11b1d5922de393ac0a6542012b7fb81761e9280c54d0f26827d50a92b54ec8f0c8e52364d89970b5
   languageName: node
   linkType: hard
 
