@@ -23,14 +23,6 @@ export default function HomePage() {
           <div>
             <BaseTargetCard name="Week" target="week" />
           </div>
-
-          <div>
-            <BaseTargetCard name="Day" target="day" />
-          </div>
-
-          <div>
-            <BaseTargetCard name="Day" target="day" />
-          </div>
         </Plock>
       </div>
     </div>
