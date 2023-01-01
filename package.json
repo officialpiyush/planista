@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "dayjs": "^1.11.7",
+    "firebase": "^9.15.0",
     "pretty-ms": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
