@@ -1,5 +1,5 @@
 import * as Realm from "realm-web";
-import getUnixTime from "./time";
+import { getDateUnixTime, getReadableDate, getUnixTime } from "./time";
 import { CreateTargetOptions } from "./types";
 
 // const ObjectId = Realm.BSON.ObjectID;
@@ -24,9 +24,6 @@ const createTarget = async ({
       repeat,
       duration,
     });
-
-  // eslint-disable-next-line no-console
-  console.log(data);
 
   // eslint-disable-next-line consistent-return
   return data.insertedId;
@@ -86,18 +83,23 @@ const getAllTargets = async (): Promise<any[]> => {
   return documents;
 };
 
-const insertTask = async (parentId: string, task: string) => {
-  if (!realmApp.currentUser) return;
+const insertTask = async (parentId: string, task: string): Promise<any> => {
+  if (!realmApp.currentUser) return null;
 
-  realmApp.currentUser
+  const created = await realmApp.currentUser
     ?.mongoClient("mongodb-atlas")
     .db("planista")
     .collection("tasks")
     .insertOne({
       ownerId: realmApp.currentUser.id,
       name: task,
-      status: "Open",
+      parentId,
+      readableDate: getReadableDate(),
+      forDate: getDateUnixTime(),
+      completedAt: getUnixTime(),
     });
+
+  return created;
 };
 
 export {

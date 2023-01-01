@@ -2,4 +2,8 @@ import dayjs from "dayjs";
 
 const getUnixTime = () => dayjs().valueOf();
 
-export default getUnixTime;
+const getReadableDate = () => dayjs().format("DD/MM/YYYY");
+
+const getDateUnixTime = () => dayjs().startOf("day").valueOf();
+
+export { getUnixTime, getReadableDate, getDateUnixTime };
