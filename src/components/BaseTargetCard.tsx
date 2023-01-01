@@ -3,13 +3,17 @@ import { useEffect, useState } from "react";
 import prettyMs from "pretty-ms";
 import CheckBox from "./CheckBox";
 import AddInput from "./AddInput";
+import { insertTask } from "../utils/realm";
 
 interface BaseTargetCardProps {
+  id: string;
   name: string;
-  target: "day" | "week" | "month" | "year";
+  repeat: "day" | "week" | "month" | "year";
 }
 
-export default function BaseTargetCard({ name, target }: BaseTargetCardProps) {
+export default function BaseTargetCard({
+  id, name, repeat,
+}: BaseTargetCardProps) {
   const [tasks, setTasks] = useState<string[]>([]);
   const [timeRemaining, setTimeRemaining] = useState<number>(0);
 
@@ -20,9 +24,16 @@ export default function BaseTargetCard({ name, target }: BaseTargetCardProps) {
     year: 31536000000,
   };
 
+  const addTask = async (taskName: string) => {
+    const createdTask = await insertTask(id, taskName);
+    if (!createdTask) return;
+
+    setTasks([...tasks, createdTask.name]);
+  };
+
   const updateTime = () => {
     const now = dayjs();
-    const endOfDay = now.endOf(target);
+    const endOfDay = now.endOf(repeat);
     const millisecondsRemaining = endOfDay.diff(now, "milliseconds");
 
     setTimeRemaining(millisecondsRemaining);
@@ -38,8 +49,8 @@ export default function BaseTargetCard({ name, target }: BaseTargetCardProps) {
     return () => clearInterval(interval);
   }, []);
 
-  const onItemAdd = (task: string) => {
-    setTasks([...tasks, task]);
+  const onItemAdd = async (task: string) => {
+    await addTask(task);
   };
 
   return (
@@ -49,7 +60,7 @@ export default function BaseTargetCard({ name, target }: BaseTargetCardProps) {
       </div>
       <div className="p-4 flex flex-col gap-4">
         <div className="flex flex-col gap-0">
-          <progress className="w-full" value={millisecondsInTarget[target] - timeRemaining} max={millisecondsInTarget[target]} />
+          <progress className="w-full" value={millisecondsInTarget[repeat] - timeRemaining} max={millisecondsInTarget[repeat]} />
           <div className="flex justify-end">
             <div>
               { prettyMs(timeRemaining, { secondsDecimalDigits: 0 })}
