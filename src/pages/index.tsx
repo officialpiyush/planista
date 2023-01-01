@@ -1,4 +1,5 @@
 import { Breakpoint, Plock } from "react-plock";
+import AuthButton from "../components/AuthButton";
 import BaseTargetCard from "../components/BaseTargetCard";
 import YearBar from "../components/YearBar";
 
@@ -10,7 +11,10 @@ const breakpoints: Breakpoint[] = [
 export default function HomePage() {
   return (
     <div className="space-y-6">
-      <div className="pt-4 text-center text-3xl font-extrabold underline underline-double">Planista</div>
+      <div className="bg-red900 flex items-end justify-between">
+        <div className="pt-4 text-center text-3xl font-extrabold underline underline-double">Planista</div>
+        <AuthButton />
+      </div>
       <YearBar />
 
       <div>
