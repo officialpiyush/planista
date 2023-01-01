@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import prettyMs from "pretty-ms";
+import CheckBox from "./CheckBox";
 
 interface BaseTargetCardProps {
   name: string;
@@ -40,15 +41,29 @@ export default function BaseTargetCard({ name, target }: BaseTargetCardProps) {
       <div className="border-b-2 border-black py-1 px-2">
         <span className="text-xl">{name}</span>
       </div>
-      <div className="p-4 flex flex-col">
-        <progress className="w-full" value={millisecondsInTarget[target] - timeRemaining} max={millisecondsInTarget[target]} />
-        <div className="flex justify-end">
-          <div>
-            { prettyMs(timeRemaining, { secondsDecimalDigits: 0 })}
+      <div className="p-4">
+        <div className="flex flex-col gap-0">
+          <progress className="w-full" value={millisecondsInTarget[target] - timeRemaining} max={millisecondsInTarget[target]} />
+          <div className="flex justify-end">
+            <div>
+              { prettyMs(timeRemaining, { secondsDecimalDigits: 0 })}
+            </div>
           </div>
+          <div />
         </div>
-        <div />
+
+        <div className="space-y-1">
+          <CheckBox task="Some Random Task" checked={false} />
+          <CheckBox task="Some Random Task Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium repellat maiores quia, necessitatibus quisquam rerum praesentium harum quo molestiae nesciunt!" checked={false} />
+          <CheckBox task="Some Random Task" checked={false} />
+          <CheckBox task="Some Random Task" checked={false} />
+          <CheckBox task="Some Random Task" checked={false} />
+          <CheckBox task="Some Random Task" checked={false} />
+          <CheckBox task="Some Random Task" checked={false} />
+          <CheckBox task="Some Random Task" checked={false} />
+        </div>
       </div>
+
     </div>
   );
 }
