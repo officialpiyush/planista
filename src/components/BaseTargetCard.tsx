@@ -10,7 +10,7 @@ interface BaseTargetCardProps {
 }
 
 export default function BaseTargetCard({ name, target }: BaseTargetCardProps) {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<string[]>([]);
   const [timeRemaining, setTimeRemaining] = useState<number>(0);
 
   const millisecondsInTarget = {
