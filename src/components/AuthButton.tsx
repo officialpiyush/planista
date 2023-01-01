@@ -1,11 +1,26 @@
 import { getAuth } from "firebase/auth";
+import { useEffect } from "react";
 import { useAuthState, useSignInWithGoogle, useSignOut } from "react-firebase-hooks/auth";
+import { signInUser } from "../utils/realm";
 
 export default function AuthButton() {
   const auth = getAuth();
   const [authUser, authLoading, authError] = useAuthState(auth);
   const [signInWithGoogle,, loading, error] = useSignInWithGoogle(auth);
   const [signOut, signOutLoading, signoutError] = useSignOut(auth);
+
+  const handleRealmAuth = async () => {
+    if (!authUser) return;
+
+    const token = await authUser.getIdToken();
+    await signInUser(token);
+  };
+
+  useEffect(() => {
+    if (!authUser) return;
+
+    handleRealmAuth();
+  }, [authUser]);
 
   const signUserIn = async () => {
     await signInWithGoogle();
