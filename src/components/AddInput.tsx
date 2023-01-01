@@ -11,7 +11,14 @@ export default function AddInput() {
         onChange={(e) => { setValue(e.target.value); }}
         type="text"
       />
-      <button type="button" className="px-4 py-2 bg-pastel-peach hover:(bg-pastel-peach/60) border border-black">Add</button>
+      <button
+        disabled={!value}
+        type="button"
+        className="disabled:(cursor-not-allowed opacity-40) px-4 py-2 bg-pastel-peach hover:(bg-pastel-peach/60) border border-black"
+      >
+        Add
+
+      </button>
     </div>
   );
 }
