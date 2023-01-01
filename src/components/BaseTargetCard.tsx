@@ -10,6 +10,7 @@ interface BaseTargetCardProps {
 }
 
 export default function BaseTargetCard({ name, target }: BaseTargetCardProps) {
+  const [tasks, setTasks] = useState(new Array(6).fill(0).map((_, index) => index.toString()));
   const [timeRemaining, setTimeRemaining] = useState<number>(0);
 
   const millisecondsInTarget = {
@@ -37,6 +38,10 @@ export default function BaseTargetCard({ name, target }: BaseTargetCardProps) {
     return () => clearInterval(interval);
   }, []);
 
+  const onItemAdd = (task: string) => {
+    setTasks([...tasks, task]);
+  };
+
   return (
     <div className="border-2 border-black bg-pastel-red">
       <div className="border-b-2 border-black py-1 px-2">
@@ -53,23 +58,10 @@ export default function BaseTargetCard({ name, target }: BaseTargetCardProps) {
           <div />
         </div>
 
-        <AddInput />
+        <AddInput onAdd={onItemAdd} />
 
         <div className="-space-y-1">
-          <CheckBox task="Some Random Task" checked={false} />
-          <CheckBox task="Some Random Task Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium repellat maiores quia, necessitatibus quisquam rerum praesentium harum quo molestiae nesciunt!" checked={false} />
-          <CheckBox task="Some Random Task" checked={false} />
-          <CheckBox task="Some Random Task" checked={false} />
-
-          {name === "Week" ? (
-            <>
-
-              <CheckBox task="Some Random Task" checked={false} />
-              <CheckBox task="Some Random Task" checked={false} />
-              <CheckBox task="Some Random Task" checked={false} />
-              <CheckBox task="Some Random Task" checked={false} />
-            </>
-          ) : ""}
+          {tasks.map((task) => <CheckBox key={task} task={task} checked={false} />)}
         </div>
       </div>
 
