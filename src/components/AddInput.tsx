@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHotkeys } from "react-hotkeys-hook";
 
 interface AddInputProps {
   onAdd: (value: string) => void;
@@ -14,9 +15,16 @@ export default function AddInput({ onAdd }: AddInputProps) {
     setValue("");
   };
 
+  const ref = useHotkeys("return", onAddClicked, {
+    enableOnFormTags: true,
+  }, [value]);
+
   return (
-    <div className="flex gap-4">
+    <div
+      className="flex gap-4"
+    >
       <input
+        ref={ref as any}
         className="w-full focus:(ring-0 ring-offset-0)"
         value={value}
         onChange={(e) => { setValue(e.target.value); }}
