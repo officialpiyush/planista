@@ -10,7 +10,7 @@ interface BaseTargetCardProps {
 }
 
 export default function BaseTargetCard({ name, target }: BaseTargetCardProps) {
-  const [tasks, setTasks] = useState(new Array(6).fill(0).map((_, index) => index.toString()));
+  const [tasks, setTasks] = useState([]);
   const [timeRemaining, setTimeRemaining] = useState<number>(0);
 
   const millisecondsInTarget = {
@@ -61,7 +61,9 @@ export default function BaseTargetCard({ name, target }: BaseTargetCardProps) {
         <AddInput onAdd={onItemAdd} />
 
         <div className="-space-y-1">
-          {tasks.map((task) => <CheckBox key={task} task={task} checked={false} />)}
+          {tasks.length
+            ? tasks.map((task) => <CheckBox key={task} task={task} checked={false} />)
+            : <div className="text-center">No tasks found</div>}
         </div>
       </div>
 
