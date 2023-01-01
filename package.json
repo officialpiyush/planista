@@ -21,7 +21,8 @@
     "react-hotkeys-hook": "^4.3.2",
     "react-plock": "^2.0.0",
     "react-router": "^6.6.1",
-    "react-router-dom": "^6.6.1"
+    "react-router-dom": "^6.6.1",
+    "realm-web": "^2.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
