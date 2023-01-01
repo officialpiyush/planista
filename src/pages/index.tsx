@@ -27,7 +27,9 @@ export default function HomePage() {
   return (
     <div className="space-y-6">
       <div className="bg-red900 flex items-end justify-between">
-        <div className="pt-4 text-center text-3xl font-extrabold underline underline-double">Planista</div>
+        <div className="pt-4 text-center text-3xl font-extrabold underline underline-double">
+          Planista
+        </div>
         <AuthButton />
       </div>
       <YearBar />
@@ -37,7 +39,12 @@ export default function HomePage() {
         <Plock gap="1rem" breakpoints={breakpoints}>
           {targets.map((target: TargetDbDocument) => (
             <div key={`${target.ownerId}-${target.name}`}>
-              <BaseTargetCard name={target.name} target={target.repeat as any} />
+              <BaseTargetCard
+                // eslint-disable-next-line no-underscore-dangle
+                id={target._id.toHexString()}
+                name={target.name}
+                repeat={target.repeat}
+              />
             </div>
           ))}
         </Plock>
