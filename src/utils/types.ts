@@ -9,5 +9,13 @@ interface CreateTargetOptions {
   duration: CreateTargetDuration | undefined;
 }
 
-// eslint-disable-next-line import/prefer-default-export
-export type { CreateTargetOptions };
+interface TargetDbDocument {
+  _id: any
+  ownerId: string
+  createdAt: number
+  name: string
+  repeat: string
+  duration: any
+}
+
+export type { CreateTargetOptions, TargetDbDocument };

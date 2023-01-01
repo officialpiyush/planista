@@ -46,7 +46,7 @@ const getorCreateDefaultDocuments = async () => {
   const mandatory = ["day", "week", "month"];
   const allRemaining = mandatory.filter((m) => !documents.find((d) => d.repeat === m));
 
-  allRemaining.forEach(async (remaining) => {
+  allRemaining.map(async (remaining) => {
     await createTarget({
       // magically uppercases the first letter
       name: remaining.charAt(0).toUpperCase() + remaining.slice(1),
@@ -69,6 +69,23 @@ const signInUser = async (token: string) => {
   }
 };
 
+const getAllTargets = async (): Promise<any[]> => {
+  if (!realmApp.currentUser) return [];
+
+  const database = realmApp.currentUser
+    .mongoClient("mongodb-atlas")
+    .db("planista");
+
+  const documents: any[] = await database
+    .collection("targets")
+    .aggregate([
+      { $sort: { createdAt: 1 } },
+    ]);
+    // .find({ ownerId: realmApp.currentUser.id });
+
+  return documents;
+};
+
 const insertTask = async (parentId: string, task: string) => {
   if (!realmApp.currentUser) return;
 
@@ -84,5 +101,5 @@ const insertTask = async (parentId: string, task: string) => {
 };
 
 export {
-  realmApp, signInUser, insertTask, createTarget,
+  realmApp, signInUser, insertTask, createTarget, getAllTargets,
 };

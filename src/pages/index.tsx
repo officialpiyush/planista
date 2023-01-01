@@ -1,7 +1,10 @@
+import { useEffect, useState } from "react";
 import { Breakpoint, Plock } from "react-plock";
 import AuthButton from "../components/AuthButton";
 import BaseTargetCard from "../components/BaseTargetCard";
 import YearBar from "../components/YearBar";
+import { getAllTargets } from "../utils/realm";
+import { TargetDbDocument } from "../utils/types";
 
 const breakpoints: Breakpoint[] = [
   { size: 640, columns: 1 },
@@ -9,6 +12,18 @@ const breakpoints: Breakpoint[] = [
 ];
 
 export default function HomePage() {
+  const [targets, setTargets] = useState<any[]>([]);
+
+  const fetchTargets = async () => {
+    const targetsFromDatabase = await getAllTargets();
+
+    setTargets(targetsFromDatabase);
+  };
+
+  useEffect(() => {
+    fetchTargets();
+  }, []);
+
   return (
     <div className="space-y-6">
       <div className="bg-red900 flex items-end justify-between">
@@ -20,13 +35,11 @@ export default function HomePage() {
       <div>
         {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-6"> */}
         <Plock gap="1rem" breakpoints={breakpoints}>
-          <div>
-            <BaseTargetCard name="Day" target="day" />
-          </div>
-
-          <div>
-            <BaseTargetCard name="Week" target="week" />
-          </div>
+          {targets.map((target: TargetDbDocument) => (
+            <div key={`${target.ownerId}-${target.name}`}>
+              <BaseTargetCard name={target.name} target={target.repeat as any} />
+            </div>
+          ))}
         </Plock>
       </div>
     </div>
